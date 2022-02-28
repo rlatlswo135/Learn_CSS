@@ -1,0 +1,83 @@
+body,
+h4 {
+  margin: 0px;
+}
+div {
+  box-sizing: border-box;
+}
+
+.cart-table td,
+.cart-table th {
+  padding: 15px;
+  border-bottom: 1px solid #c2d3de;
+}
+thead {
+  font-style: oblique;
+}
+
+table {
+  border-collapse: collapse;
+  /* 셀간 간격 조절 css reset느낌*/
+}
+
+.cell-long {
+  width: 400px;
+  /* 다른cell들에 최소폭을 건드리지 않는선에서 변경됨 */
+}
+
+.container {
+  width: 100%;
+  background-color: #c2d3de;
+  padding: 30px;
+}
+
+.cart-table {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.cart-table td {
+  color: skyblue;
+}
+/* vertical-align => 표안에 content정렬 (top,bottom,center) */
+
+.btn {
+  display: block;
+  float: right;
+  padding: 15px;
+  cursor: pointer;
+  color: gray;
+  background-color: blanchedalmond;
+  border: none;
+}
+.btnTest {
+  padding: 30px;
+  border-radius: 5px;
+  border-style: none;
+  font-size: 20px;
+  color: white;
+}
+/* 이렇게 재사용성을 고려해서 클래스를 짜면좋음 
+항상 코딩은 중복을 없애는게 좋다 => object oriented css(작성방법론)
+그래서 유틸리티클래스라고 기능이 한개만들어있는 css를 미리만들어놔서 쓰기도한다 */
+.bg-red {
+  /* 유틸리티클래스 */
+  background-color: red;
+}
+.bg-blue {
+  background-color: blue;
+}
+
+.btn:hover {
+  background-color: aqua;
+}
+.btn:focus {
+  background-color: grey;
+}
+.btn:active {
+  background-color: brown;
+}
+/* 수도클래스는 나름의 순서가 중요하다 호버->포커스상태->누를때 */

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="./layout2.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="main-background">
+            <div class="content">
+                <h4 class="main-title">NEON Signal</h4>
+                <p class="main-content">Show Your Passion!</p>
+                <button class="main-button">support</button>
+            </div>
+        </div>
+        <div class="main-footer">
+            <h4>Title</h4>
+            <p>position-relative</p>
+        </div>
+        <!-- 서버에 보내는 형식을 정해주는 action과 method 옵션이있다
+        placeholder vs value (배경글자 vs 실제채워진값 의차이정도랄까)
+        name 속성역시 데이터 넘길때 해당이름으로 넘어가게됨
+    -->
+        <form>
+            <input placeholder="css-edit" class="text-input" type="text">
+            <input type="date">
+            <input type="email">
+            <input type="checkbox">
+            <input type="radio">
+            <input type="file">
+            <select>
+                <option>a</option>
+                <option>b</option>
+                <option>c</option>
+            </select>
+            <textarea>text-area => 땅겨서 키울수있음</textarea>
+            <!-- 아무튼 다양한 form이 있으니 mdn검색해보셈 -->
+        </form>
+        <div class="form-backgroud">
+            <div class="form-white">
+                <form>
+                    <div class="w-100">
+                        <h3>Contact us</h3>
+                        <p>Your Email</p>
+                        <input class="form-input" type="email">
+                    </div>
+                    <div class="w-50">
+                        <p>First Name</p>
+                        <input class="form-input" type="text">
+                    </div>
+                    <div class="w-50">
+                        <p>Last Name</p>
+                        <input class="form-input" type="text">
+                    </div>
+                    <div style="clear:both"></div>
+                    <!-- float속성 초기화위해 -->
+                    <div class="w-100">
+                        <!-- class를 재사용해서 할줄 알아야,... 그래야 찔밥에서 탈출함
+                        그러니 클래스명도 고민은 해보고 지어야겟지? -->
+                        <p>Message</p>
+                        <textarea class="form-input form-long"></textarea>
+                    </div>
+                    <div>
+                        <input id="sub" type="checkbox">
+                        <!-- span같은것보단 label태그를 이용해서(보통체크박스랑 같이많이나옴)
+                        for은 연결된 id를 같이누른것처럼 label태그의 글을눌럿는데 체크박스에 체크가된다!
+                         느낌! -->
+                        <label for="sub">Subscribe</label>
+                        <button class="yellow-button">SEND</button>
+
+                        <!-- 마찬가지로 float 초기화를위해 -->
+                        <div style="clear:both"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
