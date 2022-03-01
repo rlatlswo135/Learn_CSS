@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./media.css">
+        <link rel="stylesheet" href="../../Lea-CSS/fontawesome/css/all.min.css">
+        <!-- 아마 5버전으로 집어넣엇는데 공식문서는 6버전이라 fa-solid = fas 이런게 안맞는듯? -->
+    </head>
+    <body>
+        <div class="container">
+            <div class="container-2">
+                <div class="item">
+                    <div class="overlay">Cart</div>
+                    <i class="fas fa-shopping-cart fa-3x"></i>
+                    <h4>item1</h4>
+                    <p>item1</p>
+                </div>
+                <div class="item">
+                    <div class="overlay">Earth</div>
+                    <i class="fas fa-globe-asia fa-3x"></i>
+                    <h4>item2</h4>
+                    <p>item2</p>
+                </div>
+            </div>
+            <div class="container-2">
+                <div class="item">
+                    <div class="overlay">User</div>
+                    <i class="fas fa-user fa-3x"></i>
+                    <h4>item3</h4>
+                    <p>item3</p>
+                </div>
+                <div class="item">
+                    <div class="overlay">Tshirt</div>
+                    <i class="fas fa-tshirt fa-3x"></i>
+                    <h4>item4</h4>
+                    <p>item4</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-true">
+            <div class="item-true">
+                <div class="overlay-wrap">
+                    <!-- 따로 wrap을 만든이유, item-true컨테이너에 호버를걸고 애니메이션을 걸면
+                    overlay가 튀어나왓을시 overlay에 hover가 걸릴수있기때문, 그렇게되면 애니메이션은 끊기고 막
+                왓다갓다 하게될거임 그러니 겹치는 absolute wrap을 하나만들어서 언제나 해당 호버가 적용되게끔
+            overflow:hidden 속성도 이용해주기위해 자식컨테이너로 overlay2를 넣엇다.
+        그러면 부모단에서 넘치는 content들은 자동으로 숨겨지니까 (margin으로 애니메이션을 조절하기때문에[밑에서올라오는]
+        그러니 step1 애니메이션 전단계 디자인에서 마진때문에 흘러넘치던 컨테이너를 숨길수있음)
+     -->
+                    <div class="overlay2">Content</div>
+                </div>
+                <h4>item1</h4>
+                <p>item1</p>
+            </div>
+            <div class="item-true">
+                <div class="overlay-wrap">
+                    <div class="overlay2">Content2</div>
+                </div>
+                <h4>item2</h4>
+                <p>item2</p>
+            </div>
+            <div class="item-true">
+                <div class="overlay-wrap">
+                    <div class="overlay2">Content3</div>
+                </div>
+                <h4>item3</h4>
+                <p>item3</p>
+            </div>
+            <div class="item-true">
+                <div class="overlay-wrap">
+                    <div class="overlay2">Content4</div>
+                </div>
+                <h4>item4</h4>
+                <p>item4</p>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </body>
+</html>

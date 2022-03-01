@@ -1,24 +1,67 @@
+/* media 쿼리는 맨밑에 css캐스케이딩이니까 */
+body {
+  margin: 0px;
+}
+div {
+  box-sizing: border-box;
+}
+
+.flex-container {
+  background-color: black;
+  display: flex;
+  /* flex-wrap: wrap; */
+  padding: 5px;
+  height: 40px;
+  align-items: center;
+  /* item이 넘칠때 아래로 보낼건지 */
+}
+
+.flex-item {
+  margin: 10px;
+  width: 200px;
+  /*
+  table과 비슷하게 최대한 해당 width를 set하려고 노력을하는거지
+  100%는 아님
+  */
+  color: white;
+}
+
+.grow {
+  /* flex특징상 정확히는아니지만 최대한 배율유지를 하려고 한다 */
+  flex-grow: 3;
+  /* 다른 grow요소 먹은거에 비해 비율을 조정 */
+}
+.menu {
+  text-align: end;
+}
+
+.test {
+  width: 100vw;
+  /* view width */
+  /* rem : 기본폰트사이즈에(보통 16px) 비례 
+  타 브라우저에서 폰트크기 조정을했는데 rem이 아니라면
+  레이아웃이 폰트때문에 무너지기때문에 비례해서 레이아웃도 변경되는느낌이다
+  그니까 폰트가 커지면 rem단위도 커지고 그러니 레이아웃도 덩달아 커지겟지
+  하지만 요새는 컨트롤누르고 확대하기때문에 쓰려나,,
+  
+  em : 내 폰트사이즈에 비례*/
+
+  height: 100px;
+  background-color: gray;
+}
+
+/* ------------ */
+
 @font-face {
   font-family: "my-font";
   src: url("");
 }
-/*
-폰트파일을 내가 원하는이름으로 넣는느낌 나중에 my-font로 폰트패밀리에 넣어주면 되겟지?
-근데 폰트파일은 용량이크다! -> 로딩시 시간이걸릴거라는거
--> .woff파일(Web용으로 나온 fontfile)을 쓰면 용량이 엄청 줄어듬
-*/
 
 body {
   margin: 0px;
   font-family: "gulim", "dotum", "arial";
-  /* 
-  안정성을 위한코드 굴림이없다면 -> 돋움 없다면 -> 아리얼
-  
-  Google fonts를 이용해보자! => 구글이제공하는 font 호스팅사이트
-   */
+
   font-weight: 900;
-  /* 그냥 font-weight를 주면 폰트가 안이쁘게나와서
-  따로 무거운폰트 woff파일을 쓰기도 했다 */
 }
 
 p,
@@ -28,7 +71,7 @@ h2,
 h1,
 span {
   /* 폰트 알리어싱을 주는방법인데 맥은상관없는데 윈도우면
-    확대시 폰트가 살짝 깨질수잇는데 해결방법이 티도안날정도로 살짝 회전을 시켜주는거 */
+      확대시 폰트가 살짝 깨질수잇는데 해결방법이 티도안날정도로 살짝 회전을 시켜주는거 */
   transform: rotate(0.03deg);
 }
 
@@ -36,11 +79,6 @@ div,
 input,
 textarea {
   box-sizing: border-box;
-  /* 실제 width는 content의 크기기때문에 border padding등은 width에 영향을안미친다
-  그게 불편하기때문에 border-box로 설정해주는것.
-  padding border다 포함한 박스의 크기가 width가된다 */
-
-  /* input역시 box라서 위와마찬가지다 그러니까 ,셀렉터 이용해서 */
 }
 
 /* 이런게 css 초기화 */
@@ -54,9 +92,6 @@ textarea {
   background-size: cover;
   /* cover 알아서 채워라 contain 공백잇어도 되니 배경 다나오게해줘라 */
   background-position: center;
-  /* 백그라운드를 어디서부터 채울건지 */
-  /* filter: brightness(70%); */
-  /* 밝기필터 자세한 기능은 mdn 참조 */
   padding: 1px;
   /* margin-collapse를 없애기위해 마진을 나눈 모습 */
 }
@@ -70,9 +105,6 @@ textarea {
   font-size: 80px;
   margin-top: 100px;
   margin-bottom: 20px;
-  /* margin-collapse현상 즉 부모div에 마진이 생김
-  => 마진 top이 두박스가 겹쳐서 하나의 마진으로 판단해서 겹쳐서 마진이생기는거
-  그러니 마진이 안겹치게만 하면 되는거 */
 }
 
 .main-content {
@@ -88,19 +120,6 @@ textarea {
   border-radius: 5px;
 
   position: relative;
-  /* position속성이 있어야 좌표이동이 가능함 
-  relative => 내원래 위치를 기준으로 좌표이동
-  그러니 기준점이 잡혓으니 top bottom left right등 좌표이동이 가능한거
-  float처럼 붕떠서 이동하는거(컨테이너가 아래 깔릴수도 있다는뜻)
-  static => 좌표이동x(default)
-  fixed => viewport를 기준으로 좌표를잡음(붕떠서) 뷰포트기준이니 고정된 컨테이너만들고싶으면 할수잇겟지?
-  absolute => 내 부모ele 중 position이 relative인 녀석이 기준
-  그러니 부모ele에 붙어있는 컨텐츠를 만들고싶으면
-  부모에 rel을 주고 원하는곳에 absol을 주면 따라다니겟지?
-
-  absol을 가운데정렬 => left,right 0을주고 margin을 auto 그후 적당한 width를 주면 정렬가능함
-
-  */
   top: 20px;
 }
 
@@ -113,7 +132,7 @@ textarea {
   background-color: #eee;
   max-width: 600px;
   /* width를 %로줄경우 모바일 태블릿등 pc창과는 너무다르기때문에
-  최대 width를 정해주는게 좋다 */
+    최대 width를 정해주는게 좋다 */
   width: 80%;
   top: -40px;
   /* 붕떠잇는애들이 많을때 순서를 정하는 z-index 높을수록 더 붕떠잇다(뷰포트에 잡히겟지?) */
@@ -170,3 +189,26 @@ input[type="text"] {
   display: block;
   float: right;
 }
+
+/* ----- */
+@media screen and (max-width: 1200px) {
+  /* max-width 1200px(가 breakpoint)까지는 아래의 코드로 적용해주세요 느낌 */
+  .main-title {
+    font-size: 30px;
+    color: black;
+  }
+}
+/* 여러개 사용가능 */
+
+@media screen and (max-width: 768px) {
+  /* max-width 1200px까지는 아래의 코드로 적용해주세요 느낌 */
+  .main-title {
+    font-size: 15px;
+    color: green;
+  }
+}
+
+/*
+많이사용하는 break-point
+그후엔 pc 1200[까지 태블릿] 992 768 576[까지 모바일]
+*/

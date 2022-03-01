@@ -1,0 +1,153 @@
+body {
+  margin: 0px;
+}
+div {
+  box-sizing: border-box;
+}
+
+.item {
+  width: 300px;
+  text-align: center;
+  margin: 5px;
+  padding: 15px;
+  position: relative;
+}
+.container-true {
+  width: 80%;
+  max-width: 1000px;
+  margin: auto;
+  background-color: #eee;
+  text-align: center;
+}
+.item-true {
+  float: left;
+  width: 25%;
+  position: relative;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-2 {
+  display: flex;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    display: block;
+  }
+  .container-2 {
+    justify-content: center;
+  }
+  /*
+  -true가 강의방식 상자의 width를 조정해서
+  아래에 쌓이게 한방식이다
+  */
+  .container-true {
+    max-width: 600px;
+  }
+  .container-true div {
+    width: 50%;
+  }
+}
+/* 난 flex로 햇지만 해설은 float를 이용
+컨테이너 2개를 float:left 그다음 그안에 div를 float:left
+container-2 > div
+*/
+@media screen and (max-width: 576px) {
+  .container-2 {
+    text-align: center;
+    display: block;
+  }
+  /* block레벨은 기본width가 100%라 
+  margin auto로 가운데정렬 해려고 해봣자 100%라 안먹는다
+  그러니 width를 줘서 먹이든 할때는 가능
+  .item에 width가 주어졋으니 margin auto가 먹는것 */
+  .item {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .container-true div {
+    width: 100%;
+  }
+}
+
+.container i {
+  box-sizing: border-box;
+  background-color: burlywood;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  padding-top: 25px;
+  color: white;
+}
+
+/*
+Animation을 만드는 step
+
+1. 시작 style
+2. 최종 style (애니메이션이 작동한 후에 디자인)
+3. 언제 animation이 발동할건지
+4. 다정해졋으면 transition으로 애니메이션 주자
+*/
+
+.overlay {
+  left: 101px;
+  top: 16px;
+  position: absolute;
+  /* 완성본이 겹쳐져야하는거니까 붕띄우는 absolute */
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+
+  /* transition: 1,2 1이 변하면 2에 걸쳐서 서서히 변하게 해주세요
+  all(저위에 모든속성중 하나가 변하면) 1s에 걸쳐서 서서히변하게*/
+  transition: all 1s;
+  /* 트랜지션 속도를 구간별로 조정할수잇으니 구글링해보자 */
+}
+
+.overlay:hover {
+  /* 호버햇을때 에니메이션효과 -> opacity가 변하니 트랜지션충족 */
+  opacity: 1;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  vertical-align: center;
+  padding-top: 50px;
+}
+
+/* wrap을 만든이유 -> html file */
+.overlay-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.overlay2 {
+  width: 100%;
+  height: 100%;
+  margin-top: 50%;
+  /* 변할때 걸려야하는 element에 transition이 잇어야겟지? */
+  transition: all 1s;
+}
+
+/*
+이런 세세한 셀렉터를위해 보통은 js로 이벤트를 주고 dom을 직접 골라서 만져줌
+ex) css에는 click이벤트나 다양한 이벤트에는 애니메이션 효과를 줄수도없고,
+    디테일한 dom 선택도 css셀렉터만으론 힘들기때문
+
+타 사이트의 애니메이션 효과를 콘솔창에 애니메이션에서 확인가능
+*/
+
+.overlay-wrap:hover .overlay2 {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 30px;
+  margin-top: 15%;
+}
+
+/* 완성됫을때 모습이 hover상태다. 잘판단해서 넣자 */
