@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheed" href="./betterCode.css">
+        <!-- <link rel="stylesheed" href="./betterCode.css"> -->
+        <!--  1way = 덮어쓸 class를 적용할 css파일을 하나더만들어서 cascading이니까 원본 밑에 link해준다음 같은클래스로 덮어줘서 테스트-->
+    </head>
+    <body></body>
+    <!--
+        보통 css html등 유지보수하는일을 더많이한다.
+        그럼 남들이짜놓은 css를 건드릴텐데 이때 원본을 건드리는게아니라 개발자도구료 확인을하고 css를 덮어쓰는방식으로 일단 수정을 해보는건데.
+        
+        덮어쓰는 방법에는 크게 3가지.
+        1way. 같은 클래스명을 cascadig이니까 하단에 써서 덮어쓰게 하는법
+
+        2way. 우선순위를 높이는것 (tag => class => id => style in tag => css 옆에 !important 인데 id는 겹치면피곤하니 style쓰거나 
+        
+        --2way는 근본적인 해결이아니므로 급할때 테스트할때나 사용한다--
+
+        3way. specificty를 높이는것
+
+        <div class="main"></div> 에 css를 수정할때 
+        .main{} 보다는 div.main 처럼 셀렉터 를 길게길게 늘려서 우선순위를 높이는건데 셀렉터가 길면길수록 복잡하기때문에 클래스1개로 가는게 좋다
+
+        그러니 결론은 (1way가 제일 좋을거같다는 생각 -> Bootstrap도 마찬가지 유틸리티클래스등이 있다면 그냥 내가테스트할 클래스를 추가만 해주면되니까)
+
+
+        결론 = 좋은 코드는
+        1. 수정/관리가 쉬운 코드
+        2. 확장성이 좋은 코드
+        3. 양이 적은 코드(선택사항)
+    -->
+</html>
