@@ -131,7 +131,10 @@ Animation을 만드는 step
   width: 100%;
   height: 100%;
   margin-top: 50%;
-  /* 변할때 걸려야하는 element에 transition이 잇어야겟지? */
+  /*
+  변할때 걸려야하는 element에 transition이 잇어야겟지?
+  안에있는 요소가 바뀌면 1s에 걸쳐서 바뀌는거니 원래 디자인블록에 transition이 위치해잇어야하겟지?
+  */
   transition: all 1s;
 }
 
