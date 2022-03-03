@@ -1,0 +1,15 @@
+{
+  "folders": [
+	{
+		"name": "Lea-CSS",
+		"path": ".."
+	},
+	{
+		"name": "fontawesome",
+		"path": "../../../../Downloads/fontawesome"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Lea-CSS"
+  }
+}

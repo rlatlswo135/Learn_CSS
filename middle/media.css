@@ -5,6 +5,8 @@ div {
   box-sizing: border-box;
 }
 
+/* 사진이 radius시 찌그러지는건 패딩 등 여러이유있다 그래서 이미지를 div태그안에 넣어주니까 해결됫다 */
+
 .item {
   width: 300px;
   text-align: center;

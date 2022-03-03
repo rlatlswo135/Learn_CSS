@@ -33,7 +33,10 @@ body {
   background-color: coral;
   float: left;
   /* left가 붕떠서 왼쪽정렬됫으니까 right도 붕떠서 정렬할때
-  블록처럼 옆에 착하고 쌓이는 느낌 */
+  블록처럼 옆에 착하고 쌓이는 느낌 
+  right에 float가 없다면 붕떠서 쌓인 left밑에 중복해서 깔리는부분이생김
+  [포개지듯이]
+  */
 }
 .footer {
   /* 붕떠서 정렬이됫기때문에 다음 div는 붕떠잇는애 아래에 정렬이되기때문에

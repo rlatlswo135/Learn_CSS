@@ -1,0 +1,72 @@
+.pseudo::first-letter {
+  color: red;
+  font-size: 2rem;
+  /* 
+  pseudo-class => class:hover :active등 있지?
+  [다른상태일때 디자인해주고싶은것] 이라면
+
+  수도 클래스 - 엘리먼트의 구분 (: ::)
+
+  pseudo-element => 엘리먼트 내부에 일부분만 스타일주고싶을때
+  라고생각하면 좋을듯
+   */
+}
+
+.pseudo::first-line {
+  /* 이런식으로 */
+  font-size: 3rem;
+}
+
+/* 주로 쓰는 기능 */
+
+.pseudo::before {
+  content: "수도 before로 인한 추가본";
+  color: green;
+  font-size: 2.2rem;
+}
+/* .pseudo 클래스의 '자식!'요소로 맨마지막, 맨처음에 추가되는거다 */
+.pseudo::after {
+  content: "수도 after로 인한 추가본";
+  color: skyblue;
+  font-size: 2.2rem;
+}
+
+/* 응용 -> float초기화시 <div style="clear:both"></div> */
+
+.float-test {
+  float: left;
+}
+.float-test2 {
+  float: left;
+}
+.float-test3 {
+  float: left;
+}
+/* 굳이 clear용 div를 안만들어도 된단소리 */
+.container::after {
+  /* container클래스의 '자식!'요소로 맨마지막에
+  가상의 박스를 넣는느낌 */
+  content: "";
+  display: block;
+  clear: both;
+  float: none;
+}
+
+/* input[type="file"] {
+  color: white;
+} */
+
+input[type="file" i]::-webkit-file-upload-button {
+  /* -webkit- -moz- 등 키워드는 어떤 익스플로러에서 적용될 스타일인지를 정하는거(정확하지는않다) */
+  /* 해당 shadowDOM에 pseudo속성으로 수도ele를 이용해 찝을수있음 */
+  /* 개발자도구로 해당 셀렉터를 복붙해서 커스텀하자 */
+  color: white;
+  background-color: skyblue;
+  border-style: none;
+  padding: 15px;
+}
+/* 이렇게 */
+
+input::-webkit-input-placeholder {
+  color: skyblue;
+}
