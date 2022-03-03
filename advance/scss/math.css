@@ -1,0 +1,165 @@
+@charset "UTF-8";
+body {
+  margin: 0px;
+}
+
+div,
+p {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+}
+
+.layout-3 {
+  width: 100%;
+  height: 100%;
+}
+
+.flex-item {
+  background-color: aqua;
+  width: 100%;
+  height: 100px;
+  border: 1px solid black;
+}
+
+/*
+for $변수 from start through end{
+    code
+}
+
+through = 종료조건까지
+to = 종료조건 전까지
+
+for $변수 from start to end{
+    code
+}
+*/
+.col-1 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 8.3333333333%;
+}
+
+.col-2 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 16.6666666667%;
+}
+
+.col-3 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 25%;
+}
+
+.col-4 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 33.3333333333%;
+}
+
+.col-5 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 41.6666666667%;
+}
+
+.col-6 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 50%;
+}
+
+.col-7 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 58.3333333333%;
+}
+
+.col-8 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 66.6666666667%;
+}
+
+.col-9 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 75%;
+}
+
+.col-10 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 83.3333333333%;
+}
+
+.col-11 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 91.6666666667%;
+}
+
+.col-12 {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  width: 100%;
+}
+
+.layout-1 {
+  margin: 0px;
+  width: 50%;
+  list-style: none;
+  padding: 0px;
+  border: 1px solid black;
+}
+.layout-1 li {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 5%;
+  font-size: 1.2rem;
+}
+.layout-1 li:active {
+  background-color: skyblue;
+  color: white;
+}
+
+.item1 {
+  width: 70%;
+  height: 50%;
+  padding: 2% 2%;
+  border-style: none;
+  background-color: green;
+  font-size: 1.2rem;
+}
+
+.item2 {
+  width: 70%;
+  height: 50%;
+  padding: 2% 2%;
+  border-style: none;
+  background-color: skyblue;
+  font-size: 1.2rem;
+}
+
+.item3 {
+  width: 70%;
+  height: 50%;
+  padding: 2% 2%;
+  border-style: none;
+  background-color: yellow;
+  font-size: 1.2rem;
+}/*# sourceMappingURL=math.css.map */

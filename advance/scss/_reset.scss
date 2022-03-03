@@ -1,0 +1,11 @@
+@mixin default() {
+  body {
+    margin: 0px;
+  }
+  div,
+  p {
+    box-sizing: border-box;
+  }
+}
+
+$main-color: blue;

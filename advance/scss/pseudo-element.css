@@ -70,3 +70,36 @@ input[type="file" i]::-webkit-file-upload-button {
 input::-webkit-input-placeholder {
   color: skyblue;
 }
+
+input[type="range"] {
+  /* appearance => 브라우저상 기본css를 어떻게할건지 정하는,
+껏으니 아마 기본디자인도 역시 안보일거다 그후에 디자인해야지 되는
+shadow dom들이 몇개있음 => 구글검색 */
+
+  appearance: calc();
+  /* none속성 주면 아마 파란점밖에안보일것 */
+}
+
+input[type="range" i]::-webkit-slider-thumb {
+  background-color: red;
+}
+
+/* 이런식으로  셀렉터를 찾아서 커스텀가능 */
+progress {
+  appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 100px;
+  height: 50%;
+}
+progress::-webkit-progress-value {
+  background-color: gray;
+  border-radius: 100px;
+  height: 100%;
+  width: 50%;
+  /* width는 value 속성으로 넣는거다보니 바까도 적용이안되는듯? */
+  box-sizing: border-box;
+  -webkit-user-modify: read-only !important;
+}

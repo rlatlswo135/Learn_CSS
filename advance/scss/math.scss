@@ -1,0 +1,89 @@
+// 항상 강조하지만 뼈와 살을 분리하는게 중요하다.
+
+@use "./reset";
+
+@include reset.default();
+
+$default-font: 1.2rem;
+$border-color: rgb(0, 0, 0, 0.5);
+
+.row {
+  display: flex;
+}
+
+.layout-3 {
+  width: 100%;
+  height: 100%;
+}
+
+.flex-item {
+  background-color: aqua;
+  width: 100%;
+  height: 100px;
+  border: 1px solid black;
+}
+/*
+for $변수 from start through end{
+    code
+}
+
+through = 종료조건까지
+to = 종료조건 전까지
+
+for $변수 from start to end{
+    code
+}
+*/
+
+@mixin col($per) {
+  // flex에 width가 정해져있으면 최대한 그 width를 유지하려하기때문에 빼주는게 좋다 비율유지가 목적이라면
+  background-color: antiquewhite;
+  border: 1px solid black;
+  height: 100px;
+  //flex-grow: $per;
+  width: percentage($per);
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    //@include col($i)
+    @include col($i/12);
+  }
+}
+//bootstrap에 row col을 만들기위해 sass mixin for문이용해서 구현해본모습;
+
+.layout-1 {
+  margin: 0px;
+  width: 50%;
+  list-style: none;
+  padding: 0px;
+  border: 1px solid black;
+  li {
+    border: 1px solid $border-color;
+    padding: 5%;
+    font-size: $default-font;
+  }
+  li:active {
+    background-color: skyblue;
+    color: white;
+  }
+}
+
+@mixin layout2($color: gray) {
+  width: 70%;
+  height: 50%;
+  padding: 2% 2%;
+  border-style: none;
+  background-color: $color;
+  font-size: $default-font;
+}
+
+.item1 {
+  @include layout2(green);
+}
+.item2 {
+  @include layout2(skyblue);
+}
+.item3 {
+  @include layout2(yellow);
+}

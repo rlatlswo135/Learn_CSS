@@ -1,0 +1,102 @@
+/* scss는 css문법이 아니니까 css파일로 컴파일해주는데
+그 익스텐션이 live-sass-compile 밑에 watch sass누르면 
+알아서 css로 컴파일된파일이 나옴 그걸 href에 걸면되겟지? */
+
+// .sass도 가능한데 차이는 {} 컨텍스트 대신에 파이썬마냥 들여쓰기로 코드블럭을 구분한다
+
+/*
+.map파일은 뭐냐? => 실제 크롬개발자도구는 css파일을 분석하니까
+콘솔창에도 css파일로 컴파일된애가 나올거다 난 scss로 짠 파일을 분석해야하는데
+이럴때 map파일이있으면 역행해서 분석할수 있게하는거다 -> 그러니 걍 냅두면됨
+*/
+
+// css에도 변수문법이 있는데 --var var() 복잡하고 직관적이지 않으니.
+
+@use "./reset";
+/* 
+css상에 import느낌
+=> default같은 css 초기화 코드들은 css로 컴파일할 필요가없으니 _name 이런식으로 작명한다
+   이렇게되면 저장을 눌러도 live sass compiler가 css로 컴파일을 하지않게된다.
+*/
+
+// 객체에 키값에 접근하듯이 파일명.안에 들어있는 애들에 접근하면된다
+
+@include reset.default();
+// default 함수, main-color변수에 잘 접근한 모오습
+$use-color: reset.$main-color;
+$title-color: #e23690;
+$basic-font-size: 1.5rem;
+
+// %btn
+.btn {
+  padding: 10px;
+  background-color: aqua;
+  color: white;
+  border-style: none;
+}
+
+.test {
+  color: $title-color;
+}
+
+.test2 {
+  color: $title-color;
+  // 사칙연산도가능 => px은 px끼리 %는 %끼리 연산해야 에러가안남
+  font-size: $basic-font-size + 0.1rem;
+}
+
+.main-bg {
+  // nesting문법 => 관련 style의 관리와 셀렉터를 길게 나열하는거보다 훨씬 직관적
+  h4 {
+    color: $use-color;
+  }
+}
+
+.main-btn {
+  @extend .btn;
+
+  /*
+  @extend %btn; .은 실제class고 %는 임시class인데 컴파일단계에서 용량 등의 문제로
+  btn이라는 class를 남기고싶지않을때 임시클래스를 써서 컴파일단계에서는 없어지게끔 할수있다 => 임시클래스는 단독으로 컴파일되지않는다
+  */
+
+  // class의 상속마냥
+  background-color: aquamarine;
+  color: red;
+}
+
+.container-2 {
+  display: flex;
+}
+
+/* 
+마치 함수느낌 @mixin이 function이고 안에 인자를 받는데
+js는 let const등 선언 키워드를안써도 인자로 받앗는데 얘는
+선언과 비슷한 $를 해줘야하나부다(js는 이러면 default를 세팅하는건데,,
+=> 테스트 결과 default세팅도 됨!
+*/
+
+@mixin basic-mixin($template: &, $color: green) {
+  /*
+  발견해낸 오류 => 필수매개변수는 선택배개변수보다 먼저와야됨
+  ($color:green,$template) => x
+  선택매개변수인 color가 먼저왓음
+  */
+  width: 500px;
+  height: 500px;
+  background-color: $color;
+  #{$template}: black;
+  // 인자로 받는 모오습
+}
+
+.mixin {
+  @include basic-mixin();
+}
+.mixin2 {
+  // scss에서 null은 &다
+  @include basic-mixin(&, skyblue);
+}
+.mixin3 {
+  @include basic-mixin(background-color, blue);
+  // 캐스캐이딩이니 밑에 black가 적용된 모오습
+}
