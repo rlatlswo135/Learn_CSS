@@ -1,0 +1,27 @@
+@use "./reset";
+
+@include reset.default();
+
+.video-box {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  //동영상 크기가 크면 video container의 박스를 넘어가게되니 숨겨주고
+  position: relative;
+  border: 1px solid black;
+}
+
+.video-container {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // 비디오를 정가운데위치시키기위해 탑레프트를 50%씩주고 transform으로 다시 돌려놓은모습
+}
+
+h3 {
+  position: relative;
+  font-size: 1.5rem;
+  color: blue;
+}

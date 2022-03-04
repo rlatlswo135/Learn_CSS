@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./scss/avdio.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <!-- video태그는 속성이 많다
+            autoplay+muted (세트다 muted가 없으면 autoplay가 안됨)
+            preload -> none(페이지 로드시 비디오 미리다운x) auto(미리다운o) metadata(적당~~히 미리다운 [제일좋은덧?])
+            loop -> 반복재생
+            poster -> 비디오 시작전까지 보여줄 썸네일 지정 -> 다야야야양한 옵션이있다
+         -->
+        <!-- 말그대로 video태그, 소스, controls(처음에 재생버튼이 없는데 이 속성으 넣어주면 생긴다) -->
+        <video autoplay muted preload="metadata" src="/Users/kimshinjae/Desktop/코딩애플/bridge.mp4" controls></video>
+
+        <!-- 방법이 두가지인데 아래방법이 호환성측면에서 타입도 정해주고, 뭔가 더html스러워서 보기좋은것같다 -->
+
+        <!-- <video controls> -->
+            <!-- <source src="/Users/kimshinjae/Desktop/코딩애플/bridge.mp4" type="video/mp4"> -->
+            <!-- <source src="/Users/kimshinjae/Desktop/코딩애플/bridge-m.webm" type="video/mp4"> -->
+            <!-- 코드를 위에서부터 읽기때문에 .mp4확장자가 없으면 .webm확장자 파일 실행해주세요 이런뜻이다
+            그래서 호환성측면에서 더 좋을수있다는 뜻 같다. -->
+        <!-- </video> -->
+
+        <!-- 비디오에 적용되는 옵션 전부 사용가능한 모오습 마찬가지의 source태그를 사용한 방법도 가능하다 
+        autoplay는 있지만 audio에선 안먹히고 J/S를 잘만져보면 될듯하다-->
+        <audio muted controls src="/Users/kimshinjae/Desktop/코딩애플/bass.mp3"></audio>
+    </div>
+    <div class="video-box">
+        <video class="video-container" autoplay muted loop>
+            <source src="/Users/kimshinjae/Desktop/코딩애플/bridge.mp4" type="video/mp4"> 
+        </video>
+        <h3 class="video-title">London!</h3>
+    </div>
+</body>
+</html>

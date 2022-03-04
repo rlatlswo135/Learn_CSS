@@ -1,0 +1,322 @@
+@charset "UTF-8";
+body {
+  margin: 0px;
+}
+
+div,
+p {
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100%;
+}
+
+.btn {
+  padding: 10px;
+  border-style: none;
+  background-color: skyblue;
+  color: white;
+}
+
+.ani-text {
+  text-align: center;
+}
+
+.ani-text:hover {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: move;
+          animation-name: move;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+/*
+keyframes => 복잡한 애니메이션들은 transition으로는 못한다(단방향이니),
+그러니 애니메이션을 정의해주는 느낌 => scss문법은아니고 기본 css문법임; 대단해;
+*/
+@-webkit-keyframes move {
+  0% {
+    transform: translateX(0px);
+  }
+  40% {
+    transform: translateX(-100px);
+  }
+  /*
+  100%에 translate를 오른쪽에 위치하게햇더니 종료지점에 다시 원래css(text-align center)로 휙 순간인동한다
+  그래서 구간을 세세하게 쪼개서 100%시점에 다시 중앙에 돌아오게끔 햇더니 매끄러운 transform
+  실험결과 부드럽게하려면 구간을 세세하게 쪼개줘야!
+
+  => margin으로 해도 되는데 위에도 말했듯이 성능+더부드럽게(동작속도) !! 위해서 !!
+  */
+  80% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes move {
+  0% {
+    transform: translateX(0px);
+  }
+  40% {
+    transform: translateX(-100px);
+  }
+  /*
+  100%에 translate를 오른쪽에 위치하게햇더니 종료지점에 다시 원래css(text-align center)로 휙 순간인동한다
+  그래서 구간을 세세하게 쪼개서 100%시점에 다시 중앙에 돌아오게끔 햇더니 매끄러운 transform
+  실험결과 부드럽게하려면 구간을 세세하게 쪼개줘야!
+
+  => margin으로 해도 되는데 위에도 말했듯이 성능+더부드럽게(동작속도) !! 위해서 !!
+  */
+  80% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+.ani-1 {
+  text-align: center;
+}
+
+.ani-1:hover {
+  -webkit-animation-name: eventbtn;
+          animation-name: eventbtn;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+}
+
+.ani-2 {
+  text-align: center;
+  font-size: 5rem;
+}
+
+.ani-2:hover {
+  -webkit-animation-name: eventplus;
+          animation-name: eventplus;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.ani-2:active {
+  color: red;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+.ani-3-v2 {
+  width: 200px;
+  background-color: black;
+  color: white;
+  height: 100%;
+  padding: 25px;
+  position: fixed;
+  text-align: right;
+  transition: all 1s;
+  transform: translateX(-120px);
+}
+.ani-3-v2 .item {
+  text-align: center;
+}
+
+.ani-3-v2:hover {
+  transform: translateX(0px);
+}
+.ani-3-v2:hover h4 {
+  text-align: center;
+}
+.ani-3-v2:hover .item {
+  -webkit-animation-name: test-v2;
+          animation-name: test-v2;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+.ani-3 {
+  position: relative;
+  padding-right: 50px;
+  font-size: 2rem;
+  color: white;
+  background-color: black;
+  width: 50%;
+  height: 800px;
+  border: 1px solid black;
+  left: -500px;
+}
+
+@-webkit-keyframes test-v2 {
+  0% {
+    transform: translateX(-250px);
+  }
+  50% {
+    transform: translateX(50px) skewX(-30deg);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes test-v2 {
+  0% {
+    transform: translateX(-250px);
+  }
+  50% {
+    transform: translateX(50px) skewX(-30deg);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+.ani-3:hover {
+  -webkit-animation-name: eventmenu;
+          animation-name: eventmenu;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+}
+.ani-3:hover .menu {
+  text-align: center;
+}
+.ani-3:hover .item {
+  -webkit-animation-name: test;
+          animation-name: test;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+@-webkit-keyframes test {
+  0% {
+    transform: translateX(-50px);
+  }
+  50% {
+    transform: translateX(100px) rotate(10deg);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes test {
+  0% {
+    transform: translateX(-50px);
+  }
+  50% {
+    transform: translateX(100px) rotate(10deg);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@-webkit-keyframes eventbtn {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-15deg);
+  }
+  60% {
+    transform: rotate(15deg);
+  }
+  90% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes eventbtn {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-15deg);
+  }
+  60% {
+    transform: rotate(15deg);
+  }
+  90% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes eventplus {
+  0% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(60deg) scale(2);
+  }
+}
+@keyframes eventplus {
+  0% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(60deg) scale(2);
+  }
+}
+@-webkit-keyframes eventmenu {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(500px);
+  }
+  100% {
+    transform: translateX(500px);
+  }
+}
+@keyframes eventmenu {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(500px);
+  }
+  100% {
+    transform: translateX(500px);
+  }
+}
+/*
+
+브라우저가 html css를 이용해서 띄워주잖아? 그럴때 작업순서가 있는데
+
+1.Render Tree를 만든다 => css를 정리한 참고자료같은,
+
+2.Layout 잡고 => 네모네모박스부터 그림! div같은거 => 여기서 Margin padding등을 잡겟지?
+
+3. Paint 하고 => 말그대로 paint 색칠
+
+4. Composite처리 => transform opacity등 나머지 정리를 여기서해준다
+
+근데 transform이 아닌 margin으로 잡으면 2단계부터 다시 2 3 4의 단계를 거치는데
+
+transform으로 잡으면 4단계 처리만하고 끝나니까 단계가 무려 2개나 줄잖어;
+
+마찬가지다. 컬러를바꾸면 페인트인 3단계부터 3,4 => 그러니 마지막 composite단계에서 바꿔주는게 성능면에서 좋다는소리지.
+
+
+두번째 이유, 브라우저는 원래 싱글쓰레드에서 모두 html css를 처리하는데
+
+transform을 쓰면 다른 쓰레드에서 작업을 처리한다 => 그러니 빠르겟지
+
+그외에도 will-change, translate3d로 gpu성능을 쓰게한다음 뒤에 transform을 더적용해서
+gpu도 같이일하게하는 방법 등이있는데
+
+지금은 일단 제쳐줘야할거같다,,
+
+*//*# sourceMappingURL=transform.css.map */

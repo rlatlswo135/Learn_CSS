@@ -1,0 +1,231 @@
+@use "./reset";
+
+@include reset.default();
+
+.container {
+  height: 100%;
+}
+.btn {
+  padding: 10px;
+  border-style: none;
+  background-color: skyblue;
+  color: white;
+}
+.ani-text {
+  //   transform: translateX(100px);
+  //다양한 transform의 기능 + 왜 margin 으로 애니메이션을 조절하면 안되는지!
+  text-align: center;
+}
+.ani-text:hover {
+  animation-iteration-count: infinite;
+  //keyframes에서 정의한 애니메이션이름을 불러오고
+  animation-name: move;
+  // 해당 애니메이션의 시간을 정해주는느낌
+  animation-duration: 1s;
+  //다양한 animation- 조절옵션이있다 mdn검색!
+}
+
+/*
+keyframes => 복잡한 애니메이션들은 transition으로는 못한다(단방향이니),
+그러니 애니메이션을 정의해주는 느낌 => scss문법은아니고 기본 css문법임; 대단해;
+*/
+
+@keyframes move {
+  // 애니메이션의 진행률에따른 css의적용( 애니메이션이 0%적용됫을때 -> ...)
+  0% {
+    //진행률 0% => 애니메이션의 시작점이자 끝지점이겟지? => 제자리
+    transform: translateX(0px);
+  }
+  40% {
+    //진행률50% => 왼쪽! (duration 1s => 0.5s)
+    transform: translateX(-100px);
+  }
+  /*
+100%에 translate를 오른쪽에 위치하게햇더니 종료지점에 다시 원래css(text-align center)로 휙 순간인동한다
+그래서 구간을 세세하게 쪼개서 100%시점에 다시 중앙에 돌아오게끔 햇더니 매끄러운 transform
+실험결과 부드럽게하려면 구간을 세세하게 쪼개줘야!
+
+=> margin으로 해도 되는데 위에도 말했듯이 성능+더부드럽게(동작속도) !! 위해서 !!
+*/
+
+  80% {
+    transform: translateX(100px);
+  }
+  100% {
+    //진행률100% => 끝! => 제자리 (duration 1s => 1s)
+    transform: translateX(0px);
+  }
+}
+
+.ani-1 {
+  text-align: center;
+}
+.ani-1:hover {
+  animation-name: eventbtn;
+  animation-duration: 0.5s;
+}
+.ani-2 {
+  text-align: center;
+  font-size: 5rem;
+}
+.ani-2:hover {
+  animation-name: eventplus;
+  animation-duration: 1s;
+  //다양한 animation관련 옵션들 mdn에 다~~있다
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+  //애니메이션의 100%의 모습을유지할지 0%의모습을 유지할지(backwards)등 등//
+}
+.ani-2:active {
+  color: red;
+  animation-play-state: paused;
+}
+.ani-3-v2 {
+  width: 200px;
+  background-color: black;
+  color: white;
+  height: 100%;
+  padding: 25px;
+  position: fixed;
+  //fixed는 뭘까
+  text-align: right;
+  transition: all 1s;
+  //transition과 keyframes를 적재적소에 쓰자
+  transform: translateX(-120px);
+  .item {
+    text-align: center;
+  }
+}
+.ani-3-v2:hover {
+  transform: translateX(0px);
+  //translateX가 현재의 제자리가아니라 원래 -120이엇으니까 0으로 즉 제자리의 박스로 다시셋팅해준거
+  h4 {
+    text-align: center;
+  }
+  .item {
+    animation-name: test-v2;
+    animation-duration: 1s;
+  }
+}
+.ani-3 {
+  position: relative;
+  padding-right: 50px;
+  font-size: 2rem;
+  color: white;
+  background-color: black;
+  width: 50%;
+  height: 800px;
+  border: 1px solid black;
+  left: -500px;
+}
+@keyframes test-v2 {
+  0% {
+    transform: translateX(-250px);
+  }
+  50% {
+    transform: translateX(50px) skewX(-30deg);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+.ani-3:hover {
+  animation-name: eventmenu;
+  animation-duration: 1.5s;
+  .menu {
+    text-align: center;
+  }
+  .item {
+    animation-name: test;
+    animation-duration: 1s;
+  }
+}
+@keyframes test {
+  0% {
+    transform: translateX(-50px);
+  }
+  50% {
+    transform: translateX(100px) rotate(10deg);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+// .menu {
+//   text-align: right;
+// }
+// .item {
+//   color: red;
+//   text-align: center;
+// }
+@keyframes eventbtn {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-15deg);
+  }
+  60% {
+    transform: rotate(15deg);
+  }
+  90% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes eventplus {
+  0% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    // transform을 2번써서 효과를 주려햇던나,, 공식문서잘읽자
+    transform: rotate(60deg) scale(2);
+  }
+}
+
+@keyframes eventmenu {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(500px);
+  }
+  100% {
+    transform: translateX(500px);
+  }
+}
+/*
+
+브라우저가 html css를 이용해서 띄워주잖아? 그럴때 작업순서가 있는데
+
+1.Render Tree를 만든다 => css를 정리한 참고자료같은,
+
+2.Layout 잡고 => 네모네모박스부터 그림! div같은거 => 여기서 Margin padding등을 잡겟지?
+
+3. Paint 하고 => 말그대로 paint 색칠
+
+4. Composite처리 => transform opacity등 나머지 정리를 여기서해준다
+
+근데 transform이 아닌 margin으로 잡으면 2단계부터 다시 2 3 4의 단계를 거치는데
+
+transform으로 잡으면 4단계 처리만하고 끝나니까 단계가 무려 2개나 줄잖어;
+
+마찬가지다. 컬러를바꾸면 페인트인 3단계부터 3,4 => 그러니 마지막 composite단계에서 바꿔주는게 성능면에서 좋다는소리지.
+
+
+두번째 이유, 브라우저는 원래 싱글쓰레드에서 모두 html css를 처리하는데
+
+transform을 쓰면 다른 쓰레드에서 작업을 처리한다 => 그러니 빠르겟지
+
+그외에도 will-change, translate3d로 gpu성능을 쓰게한다음 뒤에 transform을 더적용해서
+gpu도 같이일하게하는 방법 등이있는데
+
+지금은 일단 제쳐줘야할거같다,,
+
+*/
