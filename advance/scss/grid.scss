@@ -1,0 +1,99 @@
+@use "./reset";
+
+@include reset.default();
+
+// grid는 IE는 안된답니다 ㅎㅎ ^^ ㅗ
+img {
+  display: block;
+  //img 태그는 기본적으로 글자랑 같은취급(inline)받아서 baseline을 채우기위해 약간 공간이있다 그래서 block준거
+  width: 100%;
+  height: 100%;
+}
+.container {
+  display: grid;
+
+  /*
+부모 container에 grid를 주면 자식들은 모눈종이가된다.
+columns(세로) rows(가로)잖아? 그니까 밑에코드는 가로3 세로2 각 100px의 모눈종이가
+된거지
+*/
+
+  height: 500px;
+  //이런식으로
+  grid-template-rows: 1fr 1fr 1fr; //가로3줄
+  grid-template-columns: 100px 100px 100px 100px; //세로4줄
+  /*
+  그럼 내가원하는 모눈종이 개수만큼 div태그도 잇어야겟지?
+  fr이라고 원하는 비율대로 쪼개주는게있는데 (마치 bootstrap row-1..처럼)
+  height가 정해져있어야지 비율대로 쪼개겟지?
+  */
+
+  //   grid-gap: 10px; //격자사이를 띄우는느낌 어쨋든 mdn에 다잇다.
+
+  div {
+    border: 1px solid black;
+  }
+}
+
+.grid-nav {
+  // grid 자식한테 쓸수있는건데 1/3분수가아니라 colum(세로선) 1~3까지 차지하라는 말.
+  grid-column: 1/3;
+  grid-row: 1/3;
+  background-color: bisque;
+  // 그럼얘는 row(가로선) 중에서 1 ~ 3까지 차지하란거겟지?
+}
+
+.test {
+  grid-row: 1/3;
+  grid-column: 4/5;
+  //이런식으로 각 줄에 번호를 매겨서 원하는곳에 배치하는 느낌인가부다
+  background-color: red;
+}
+.test2 {
+  background-color: blue;
+  //   grid-row: 1/4;
+  grid-column: 1/5;
+  //채워질수 있는곳에 알아서 채워지네?
+}
+.test3 {
+  background-color: aqua;
+  grid-row: 1/2;
+  //마음의눈으로 빈공간 보고 햇더니 알아서 채워지네;
+}
+.test4 {
+  grid-row: 2/3;
+  background-color: aquamarine;
+}
+
+.container-2 {
+  width: 500px;
+  height: 500px;
+  display: grid;
+  //grid-row column대신 이런방법도. 직관적으로 칠하는느낌 => 해본결과 grid-area방법이 더쉽고 직관적이다. 굳이 구간을 각 클래스마다 안줘도되니까
+  grid-template-areas:
+    "header header ."
+    "header header . "
+    "nav . .";
+
+  /*
+  grid-template-columns: 1fr 1fr 1fr
+  grid-template-row:1fr 1fr 1fr;
+  3*3 블록은 만든다음에
+  첫번째 사진에다가 grid-column:1/3 grid-row:1/3주면 되겟지?
+
+  */
+}
+.grid-header {
+  //grid-area이름은 내맘대로 커스텀이다
+  grid-area: header;
+}
+
+@media screen and (max-width: 700px) {
+  .container-2 {
+    display: block;
+    /*
+    난 그냥 grid를 풀어버렷지만 grid를 유지한채 하려면
+    grid-template-column:1fr 아예 1줄을 줘버리면 될거같다
+    */
+  }
+}
